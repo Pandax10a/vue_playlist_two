@@ -1,14 +1,15 @@
 <template>
     <div>
         <h1> Your current Play List:</h1>
-        <article v-if="isFilled">
+        <!-- the conditional is set if the array has an object at 1 higher -->
+        <article v-if="this.playlist.length > 0">
         <section v-for="(list,index) in playlist" :key="index" @click="move_to_play(index)">
             <p>{{index+1}}. {{list.title}}</p>
         </section>
         </article>
-        <article v-else>
-            <p>Pick some songs from above to add to play list</p>
-        </article>
+       
+            <p v-else>Pick some songs from above to add to play list</p>
+        
         
 
     </div>
@@ -22,7 +23,7 @@
                    
 
                 ],
-                isFilled: false
+                
             }
         },
         methods: {
@@ -34,13 +35,14 @@
             },
             move_to_play(i) {
                 this.$root.$emit(`prepping_play`, this.playlist[i])
-               this.isFilled = true
+               
                 
-            }
+            },
+   
         },
         mounted () {
             this.$root.$on(`put_into_playlist`, this.the_playlist);
-            
+           
         },
         name: 'play-list'
     }

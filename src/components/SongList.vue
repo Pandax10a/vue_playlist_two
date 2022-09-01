@@ -4,6 +4,8 @@
         <section v-for="(song, index) in songlists" :key="index">
             
             <h3 @click="check_playlist(index)">{{index + 1}}.  {{song.title}}</h3>
+            
+            
 
         </section>
     </div>
@@ -14,7 +16,8 @@
         methods: {
             check_playlist(i) {
                 this.$root.$emit(`put_into_playlist`, this.songlists[i])
-            }
+            },
+          
         },
         data() {
             return {
@@ -48,6 +51,8 @@
                     song_id: 6061798175,
                     image_url: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
                 }],
+             
+            
             }
         },
         name: 'song-list'
