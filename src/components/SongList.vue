@@ -13,7 +13,7 @@
     export default {
         methods: {
             check_playlist(i) {
-                this.$root.$emit(`put_into_playlist`, this.song(i))
+                this.$root.$emit(`put_into_playlist`, this.songlists[i])
             }
         },
         data() {
